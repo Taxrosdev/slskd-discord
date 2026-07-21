@@ -12,6 +12,6 @@ export function registerPopup(results: Result[], currentIndex: number): string {
 
     popups[id] = { results, currentIndex }
 
-    return id.toString()
+    return id
 }
 

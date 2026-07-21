@@ -36,7 +36,7 @@ export function download(username: string, result: Result) {
 
 async function get(url: string): Promise<Response> {
     const res = await fetch(env.slskd_apiurl + url, {
-        headers: { "X-Api-Key": env.slskd_apikey! }
+        headers: { "X-Api-Key": env.slskd_apikey }
     })
 
     if (!res.ok) {
@@ -51,7 +51,7 @@ async function post(url: string, data: {}): Promise<Response> {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
-            "X-Api-Key": env.slskd_apikey!,
+            "X-Api-Key": env.slskd_apikey,
             "Content-Type": "application/json"
         }
     })

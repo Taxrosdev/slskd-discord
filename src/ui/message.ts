@@ -3,8 +3,9 @@ import { split } from "@/utils"
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder } from "discord.js"
 
 export function buildMessage(sessionId: string, result: Result[], index: number): { embed: EmbedBuilder, buttonRow: ActionRowBuilder<ButtonBuilder> } {
-    const target = result[index]!
-    const dir = split(target.files[0]?.filename!).dir
+    const target = result[index]
+    if (!target) throw new Error(`Index ${index} is out of bounds of ${result.length}`)
+    const dir = split(target.files[0]!.filename).dir
 
     let embed = new EmbedBuilder()
         .setTitle(dir)

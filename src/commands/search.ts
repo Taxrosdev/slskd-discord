@@ -17,7 +17,7 @@ export const data = new SlashCommandBuilder()
 export const execute = async (interaction: ChatInputCommandInteraction) => {
     const query = interaction.options.getString('query')
     if (!query) {
-        interaction.reply("No query?");
+        await interaction.reply("No query?");
         return
     }
 
@@ -28,7 +28,7 @@ export const execute = async (interaction: ChatInputCommandInteraction) => {
     const res = await getResults(id)
 
     if (res.length == 0) {
-        interaction.followUp({ content: "Not found.", flags: MessageFlags.Ephemeral })
+        await interaction.followUp({ content: "Not found.", flags: MessageFlags.Ephemeral })
         return
     }
 
